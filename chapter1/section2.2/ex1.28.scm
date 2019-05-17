@@ -1,17 +1,18 @@
-; Это упражнение немного заковыристо сформулировано, но сложным не является.
-
 ; Вот код модифицированной процедуры expmod, которая сигнализирует о нахождении нетривиального квадратного корня из 1, возвращая 0 (как и рекомендовано в условии).
 
 (define (square x) 
   (* x x))
+
 (define (apply-trivial-check k m r) 
   (if (and (not (= k 1)) 
            (not (= k (- m 1))) 
            (= r 1)) 
       0 
       r))
+
 (define (remainder-or-trivial k m) 
   (apply-trivial-check k m (remainder (square k) m)))
+
 (define (modified-expmod base exp m) 
   (cond ((= exp 0) 1) 
         ((even? exp) 
@@ -24,14 +25,18 @@
 ; Если их больше половины, то число в соответствии с тестом Миллера-Рабина идентифицируется как простое. В противном случае оно составное.
 
 (define (miller-rabin-test n) 
+
   (define (miller-rabin-iteration a t n) 
+
     (define (try-it a) 
       (= (modified-expmod a (- n 1) n) 1)) 
+
     (if (= a n) 
         (> t (/ n 2)) 
         (if (try-it a) 
             (miller-rabin-iteration (+ a 1) (+ t 1) n) 
-            (miller-rabin-iteration (+ a 1) t n)))) 
+            (miller-rabin-iteration (+ a 1) t n))))
+
   (miller-rabin-iteration 1 0 n))
 
 ; Проверим написанную процедуру на нескольких простых и составных числах:
