@@ -1,0 +1,5 @@
+(define (multiple-percent x y)
+  (let ((px (percent x))
+        (px (percent y)))
+    (/ (+ px py)
+       (+ (* px py) 1))))
