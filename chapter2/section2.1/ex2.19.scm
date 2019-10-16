@@ -18,5 +18,10 @@
                     coin-values)))))
 
 (cc 100 us-coins)
-
 ;; 292
+
+(define us-coins (list 25 50 5 10 1))
+
+(cc 100 uk-coins)
+;; 292
+
