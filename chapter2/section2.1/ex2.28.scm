@@ -11,3 +11,11 @@
 
 (fringe (list x x))
 ;; (1 2 3 4 4 5 6 7 1 2 3 4 4 5 6 7)
+
+
+;; recursion
+
+(define (fringe-rec items)
+    (cond ((null? items) ())
+          ((pair? items) (append (fringe (car items)) (fringe (cdr items))))
+            (else (list items))))
