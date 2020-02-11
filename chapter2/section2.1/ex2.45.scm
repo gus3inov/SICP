@@ -1,6 +1,6 @@
 (define (split tf bf)
-  (lambda (painter n)
+  (define (drawer painter n)
     (if (= n 0)
       painter
-      (let ((smaller (split painter (- n 1))))
-        (tf painter (bf smaller smaller)))))
+      (let ((smaller (drawer painter (- n 1))))
+        (tf painter (bf smaller smaller))))) drawer)
