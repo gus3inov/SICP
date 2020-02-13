@@ -7,3 +7,14 @@
 (define (origin-frame frame) (car frame))
 (define (edge1-frame frame) (car (cdr frame)))
 (define (edge2-frame frame) (car (cdr (cdr frame))))
+
+;; -------
+
+(define (origin-frame f)
+  (car f))
+
+(define (edge1-frame f)
+  (cadr f))
+
+(define (edge2-frame f)
+  (caddr f))
