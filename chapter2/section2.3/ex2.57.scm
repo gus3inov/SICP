@@ -1,0 +1,11 @@
+(define (augend s)
+  (if (null? (cdddr s))  
+      (caddr s)            
+      (make-sum (addend (cdr s))
+                (augend (cdr s)))))
+
+(define (multiplicand p)                          
+  (if (null? (cdddr p))                              
+      (caddr p)                                        
+      (make-product (multiplier (cdr p))     
+                    (multiplicand (cdr p)))))
