@@ -44,3 +44,17 @@
 (deriv `(x + (3 * (x + (y + 2)))) `x)
 
 ;; 2.58 - b 
+
+(define (augend s)
+  (cond ((null? (cdddr s)) (caddr s))
+        ((product? (cddr s)) (make-product (multiplier (cddr s)) (multiplicand (cddr s))))
+        (else (make-sum (addend (cddr s))
+                        (augend (cddr s))))))
+
+(define (multiplicand p)
+  (cond ((null? (cdddr p)) (caddr p))
+        ((sum? (cddr p)) (make-sum (addend (cddr p)) (augend (cddr p))))
+        (else (make-product (multiplier (cddr p))     
+                            (multiplicand (cddr p))))))
+
+(deriv `(x + 3 * (x + y + 2)) `x)
