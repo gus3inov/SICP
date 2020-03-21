@@ -1,3 +1,5 @@
+;; More correct solution with token stream from Eli Benderski https://eli.thegreenplace.net/2007/08/30/sicp-sections-231-232/
+
 ;; 2.58 - a
 
 (define (sum? x)
